@@ -5,7 +5,7 @@ printf "\033[1;32m${1}\033[0m\n"
 }
 
 #VARIABLES
-DIR_APACHE='/var/www'
+DIR_APACHE=/var/www
 REPOSITORIO='http://sourceforge.net/projects/opengoo/files/fengoffice'
 MYSQL=`which mysql`
 
@@ -45,11 +45,11 @@ mkdir -p /tmp/$DIR_FENG/
 cd /tmp/$DIR_FENG/
 
 EXITO "Descargando la versión $VERSION"
-#wget -c $REPOSITORIO/fengoffice_$VERSION/fengoffice_$VERSION.zip
+wget -c $REPOSITORIO/fengoffice_$VERSION/fengoffice_$VERSION.zip
 
 unzip fengoffice_$VERSION.zip
 rm fengoffice_$VERSION.zip
-rsync -azvhP /tmp/$DIR_FENG $DIR_APACHE
+cp -rv /tmp/$DIR_FENG $DIR_APACHE
 
 EXITO "Otorgando permisos a cache/ config/ tmp/ upload/"
 sleep 1
